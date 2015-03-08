@@ -1,5 +1,5 @@
 : ${omg_ungit_prompt:=$PS1}
-: ${omg_second_line:="%~ • "}
+: ${omg_second_line:="[%{$fg[$NCOLOR]%}%B%n%b%{%reset_color}:%{$fg[red]%}%30<...<%~%<<%{$reset_color%}]%(!.#.$) "}
 : ${omg_is_a_git_repo_symbol:=''}
 : ${omg_has_untracked_files_symbol:=''}        #                ?    
 : ${omg_has_adds_symbol:=''}
@@ -21,6 +21,8 @@
 : ${omg_has_action_in_progress_symbol:=''}     #                  
 
 autoload -U colors && colors
+
+if [ $UID -eq 0 ]; then NCOLOR="green"; else NCOLOR="white"; fi
 
 PROMPT='$(build_prompt)'
 RPROMPT='%{$reset_color%}%T %{$fg_bold[white]%} %n@%m%{$reset_color%}'
