@@ -1,5 +1,5 @@
 : ${omg_ungit_prompt:=$PS1}
-: ${omg_second_line:="[%{$fg[$NCOLOR]%}%B%n%b%{%reset_color}:%{$fg[red]%}%30<...<%~%<<%{$reset_color%}]%(!.#.$) "}
+: ${omg_second_line:="[%{$fg[$NCOLOR]%}%B%n%b%{$reset_color%}:%{$fg[red]%}%30<...<%~%<<%{$reset_color%}]%(!.#.$) "}
 : ${omg_is_a_git_repo_symbol:=''}
 : ${omg_has_untracked_files_symbol:=''}        #                ?    
 : ${omg_has_adds_symbol:=''}
@@ -137,7 +137,7 @@ function custom_build_prompt {
         prompt+="%k%F{red}%k%f
 ${omg_second_line}"
     else
-        prompt="${omg_ungit_prompt}"
+        prompt="${omg_second_line}"
     fi
  
     echo "${prompt}"
